@@ -1,6 +1,4 @@
-/* =========================================
-   MOBILE MENU
-========================================= */
+/*MOBILE MENU */
 
 const menuButton = document.getElementById("menuButton");
 const mobileMenu = document.getElementById("mobileMenu");
@@ -16,9 +14,7 @@ if (menuButton) {
 }
 
 
-/* =========================================
-   CLOSE MOBILE MENU AFTER CLICK
-========================================= */
+/*CLOSE MOBILE MENU AFTER CLICK*/
 
 const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
@@ -33,9 +29,7 @@ mobileLinks.forEach(function (link) {
 });
 
 
-/* =========================================
-   ANIMATED STATISTICS
-========================================= */
+/*STATISTICS Scroll*/
 
 const stats = document.querySelectorAll(".stat strong");
 
@@ -104,9 +98,7 @@ function animateStats() {
 window.addEventListener("scroll", animateStats);
 
 
-/* =========================================
-   HEADER BACKGROUND ON SCROLL
-========================================= */
+/* HEADER BACGROUND ON SCROLL*/
 
 const header = document.querySelector(".site-header");
 
