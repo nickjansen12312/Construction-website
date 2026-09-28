@@ -1,3 +1,7 @@
+<script setup>
+import { projects } from '../content/siteContent'
+</script>
+
 <template>
   <main>
     <section class="inner-hero projects-hero">
@@ -14,38 +18,19 @@
     </section>
 
     <section class="all-projects">
-      <article class="project-large">
+      <article
+        v-for="(project, index) in projects"
+        :key="project.name"
+        class="project-large"
+        :class="{ reverse: index % 2 === 1 }"
+      >
         <div class="project-image">
-          <img src="/images/project-1.jpg" alt="Healthcare construction project" />
+          <img :src="project.image" :alt="project.alt" />
         </div>
         <div class="project-info">
-          <span>HEALTHCARE</span>
-          <h2>Springfield Medical Center</h2>
-          <p>A modern healthcare facility designed around efficiency, comfort, and reliable building systems.</p>
-          <router-link to="/contact" class="text-link">PROJECT DETAILS →</router-link>
-        </div>
-      </article>
-
-      <article class="project-large reverse">
-        <div class="project-image">
-          <img src="/images/project-2.jpg" alt="Commercial construction project" />
-        </div>
-        <div class="project-info">
-          <span>COMMERCIAL</span>
-          <h2>Downtown Innovation Hub</h2>
-          <p>A flexible commercial environment built to support collaboration, technology, and future growth.</p>
-          <router-link to="/contact" class="text-link">PROJECT DETAILS →</router-link>
-        </div>
-      </article>
-
-      <article class="project-large">
-        <div class="project-image">
-          <img src="/images/project-3.jpg" alt="Industrial construction project" />
-        </div>
-        <div class="project-info">
-          <span>INDUSTRIAL</span>
-          <h2>Bear Mechanical Manufacturing Campus</h2>
-          <p>A high-performance industrial facility designed around demanding production requirements.</p>
+          <span>{{ project.category }}</span>
+          <h2>{{ project.name }}</h2>
+          <p>{{ project.summary }}</p>
           <router-link to="/contact" class="text-link">PROJECT DETAILS →</router-link>
         </div>
       </article>

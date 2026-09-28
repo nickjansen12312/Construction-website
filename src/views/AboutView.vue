@@ -1,3 +1,8 @@
+<script setup>
+import StatsGrid from '../components/StatsGrid.vue'
+import { stats } from '../content/siteContent'
+</script>
+
 <template>
   <main>
     <section class="inner-hero">
@@ -49,12 +54,7 @@
       </div>
     </section>
 
-    <section class="about-stats">
-      <div><strong>90+</strong><span>YEARS OF EXPERIENCE</span></div>
-      <div><strong>250+</strong><span>PROJECTS COMPLETED</span></div>
-      <div><strong>500+</strong><span>TEAM MEMBERS</span></div>
-      <div><strong>12+</strong><span>MARKETS SERVED</span></div>
-    </section>
+    <StatsGrid :stats="stats" variant="about" />
 
     <section class="cta-section">
       <div>

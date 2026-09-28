@@ -1,3 +1,7 @@
+<script setup>
+import { awards } from '../content/siteContent'
+</script>
+
 <template>
   <main>
     <section class="inner-hero awards-hero">
@@ -17,39 +21,12 @@
     </section>
 
     <section class="awards-list">
-      <article class="award">
-        <div class="award-year">2026</div>
+      <article v-for="award in awards" :key="`${award.year}-${award.name}`" class="award">
+        <div class="award-year">{{ award.year }}</div>
         <div class="award-content">
-          <p>EXCELLENCE IN CONSTRUCTION</p>
-          <h2>Project Excellence Award</h2>
-          <span>Summit Manufacturing Campus</span>
-        </div>
-      </article>
-
-      <article class="award">
-        <div class="award-year">2025</div>
-        <div class="award-content">
-          <p>SAFETY</p>
-          <h2>Safety Achievement Award</h2>
-          <span>Outstanding Jobsite Safety Performance</span>
-        </div>
-      </article>
-
-      <article class="award">
-        <div class="award-year">2025</div>
-        <div class="award-content">
-          <p>ENGINEERING</p>
-          <h2>Innovation in Building Systems</h2>
-          <span>Downtown Innovation Hub</span>
-        </div>
-      </article>
-
-      <article class="award">
-        <div class="award-year">2024</div>
-        <div class="award-content">
-          <p>PROJECT OF THE YEAR</p>
-          <h2>Outstanding Project Achievement</h2>
-          <span>Springfield Medical Center</span>
+          <p>{{ award.category }}</p>
+          <h2>{{ award.name }}</h2>
+          <span>{{ award.detail }}</span>
         </div>
       </article>
     </section>

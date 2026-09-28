@@ -1,3 +1,7 @@
+<script setup>
+import { teamMembers } from '../content/siteContent'
+</script>
+
 <template>
   <main>
     <section class="inner-hero team-hero">
@@ -27,39 +31,12 @@
 
     <section class="team-grid-section">
       <div class="team-grid">
-        <article class="team-member">
-          <div class="team-photo"><img src="/images/team-1.jpg" alt="President and CEO" /></div>
+        <article v-for="member in teamMembers" :key="member.name" class="team-member">
+          <div class="team-photo"><img :src="member.image" :alt="member.role" /></div>
           <div class="team-info">
-            <p>LEADERSHIP</p>
-            <h3>Alex Morgan</h3>
-            <span>President &amp; CEO</span>
-          </div>
-        </article>
-
-        <article class="team-member">
-          <div class="team-photo"><img src="/images/team-2.jpg" alt="Vice President of Operations" /></div>
-          <div class="team-info">
-            <p>OPERATIONS</p>
-            <h3>Jordan Williams</h3>
-            <span>Vice President of Operations</span>
-          </div>
-        </article>
-
-        <article class="team-member">
-          <div class="team-photo"><img src="/images/team-3.jpg" alt="Director of Construction" /></div>
-          <div class="team-info">
-            <p>CONSTRUCTION</p>
-            <h3>Michael Carter</h3>
-            <span>Director of Construction</span>
-          </div>
-        </article>
-
-        <article class="team-member">
-          <div class="team-photo"><img src="/images/team-4.jpg" alt="Director of Engineering" /></div>
-          <div class="team-info">
-            <p>ENGINEERING</p>
-            <h3>Sarah Bennett</h3>
-            <span>Director of Engineering</span>
+            <p>{{ member.group }}</p>
+            <h3>{{ member.name }}</h3>
+            <span>{{ member.role }}</span>
           </div>
         </article>
       </div>

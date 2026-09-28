@@ -1,3 +1,7 @@
+<script setup>
+import { careerBenefits, careers } from '../content/siteContent'
+</script>
+
 <template>
   <main>
     <section class="inner-hero careers-hero">
@@ -15,20 +19,10 @@
     </section>
 
     <section class="benefits-section">
-      <div class="benefit">
-        <span>01</span>
-        <h3>Grow Your Skills</h3>
-        <p>Work alongside experienced professionals while developing skills that can grow with you.</p>
-      </div>
-      <div class="benefit">
-        <span>02</span>
-        <h3>Work Together</h3>
-        <p>Our best work happens when engineers, technicians, builders, and clients collaborate.</p>
-      </div>
-      <div class="benefit">
-        <span>03</span>
-        <h3>Make an Impact</h3>
-        <p>The systems we build become part of the communities and spaces people depend on.</p>
+      <div v-for="benefit in careerBenefits" :key="benefit.name" class="benefit">
+        <span>{{ benefit.number }}</span>
+        <h3>{{ benefit.name }}</h3>
+        <p>{{ benefit.description }}</p>
       </div>
     </section>
 
@@ -42,37 +36,12 @@
       </div>
 
       <div class="job-list">
-        <router-link to="/contact" class="job">
+        <div v-for="career in careers" :key="career.title" class="job">
           <div>
-            <span>ENGINEERING</span>
-            <h3>Mechanical Engineer</h3>
+            <span>{{ career.group }}</span>
+            <h3>{{ career.title }}</h3>
           </div>
-          <span class="job-arrow">→</span>
-        </router-link>
-
-        <router-link to="/contact" class="job">
-          <div>
-            <span>TECHNOLOGY</span>
-            <h3>Building Automation Specialist</h3>
-          </div>
-          <span class="job-arrow">→</span>
-        </router-link>
-
-        <router-link to="/contact" class="job">
-          <div>
-            <span>PROJECT MANAGEMENT</span>
-            <h3>Project Coordinator</h3>
-          </div>
-          <span class="job-arrow">→</span>
-        </router-link>
-
-        <router-link to="/contact" class="job">
-          <div>
-            <span>CONSTRUCTION</span>
-            <h3>Field Technician</h3>
-          </div>
-          <span class="job-arrow">→</span>
-        </router-link>
+        </div>
       </div>
     </section>
 

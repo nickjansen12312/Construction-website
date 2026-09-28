@@ -1,17 +1,33 @@
 <script setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
+import { submitContact } from '../lib/contact-submission'
 
-const formMessage = ref('')
+const form = reactive({ firstName: '', lastName: '', email: '', company: '', projectType: '', message: '', website: '' })
+const fields = ref(/** @type {Record<string, string>} */ ({}))
 const formStatus = ref('')
+const formMessage = ref('')
 
-function onSubmit() {
-  // Privacy fix: intercept submission so visitor data is never written into the URL
-  // (the legacy form defaulted to a GET submit). The actual POST destination is
-  // owner-gated (APP-754); until the owner connects an approved endpoint, no data
-  // leaves the browser and the user sees an explicit, accessible status.
-  formStatus.value = 'pending-destination'
-  formMessage.value =
-    'Thanks — your message is ready, but the send service has not been connected yet. Please contact the site owner to configure a submission destination.'
+const messages = {
+  pending: 'Sending your message…',
+  success: 'Thanks — your message was received. We will be in touch soon.',
+  'rate-limit': 'Too many requests. Please wait a moment before trying again.',
+  disabled: 'Message delivery is not configured right now. Please try again later.',
+  'service-failure': 'We could not send your message right now. Please try again later.',
+}
+
+async function onSubmit() {
+  fields.value = {}
+  formStatus.value = 'pending'
+  formMessage.value = messages.pending
+  const result = await submitContact(form)
+  fields.value = result.fields
+  formStatus.value = result.status
+  formMessage.value = result.status === 'validation-error'
+    ? 'Please correct the highlighted fields and try again.'
+    : messages[result.status]
+  if (result.status === 'success') {
+    Object.assign(form, { firstName: '', lastName: '', email: '', company: '', projectType: '', message: '', website: '' })
+  }
 }
 </script>
 
@@ -47,31 +63,39 @@ function onSubmit() {
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm" @submit.prevent="onSubmit">
+      <form class="contact-form" id="contactForm" novalidate @submit.prevent="onSubmit">
+        <div class="visually-hidden" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" v-model="form.website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">FIRST NAME</label>
-            <input type="text" id="firstName" name="firstName" required />
+            <input id="firstName" v-model="form.firstName" type="text" name="firstName" autocomplete="given-name" :aria-invalid="Boolean(fields.firstName)" aria-describedby="firstName-error" />
+            <p v-if="fields.firstName" id="firstName-error" class="field-error">{{ fields.firstName }}</p>
           </div>
           <div class="form-group">
             <label for="lastName">LAST NAME</label>
-            <input type="text" id="lastName" name="lastName" required />
+            <input id="lastName" v-model="form.lastName" type="text" name="lastName" autocomplete="family-name" :aria-invalid="Boolean(fields.lastName)" aria-describedby="lastName-error" />
+            <p v-if="fields.lastName" id="lastName-error" class="field-error">{{ fields.lastName }}</p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="email">EMAIL</label>
-          <input type="email" id="email" name="email" required />
+          <input id="email" v-model="form.email" type="email" name="email" autocomplete="email" :aria-invalid="Boolean(fields.email)" aria-describedby="email-error" />
+          <p v-if="fields.email" id="email-error" class="field-error">{{ fields.email }}</p>
         </div>
 
         <div class="form-group">
           <label for="company">COMPANY</label>
-          <input type="text" id="company" name="company" />
+          <input id="company" v-model="form.company" type="text" name="company" autocomplete="organization" :aria-invalid="Boolean(fields.company)" aria-describedby="company-error" />
+          <p v-if="fields.company" id="company-error" class="field-error">{{ fields.company }}</p>
         </div>
 
         <div class="form-group">
           <label for="projectType">PROJECT TYPE</label>
-          <select id="projectType" name="projectType">
+          <select id="projectType" v-model="form.projectType" name="projectType" :aria-invalid="Boolean(fields.projectType)" aria-describedby="projectType-error">
             <option value="">Select a project type</option>
             <option>Mechanical</option>
             <option>Electrical</option>
@@ -79,16 +103,18 @@ function onSubmit() {
             <option>Building Automation</option>
             <option>General Inquiry</option>
           </select>
+          <p v-if="fields.projectType" id="projectType-error" class="field-error">{{ fields.projectType }}</p>
         </div>
 
         <div class="form-group">
           <label for="message">MESSAGE</label>
-          <textarea id="message" name="message" rows="6" required></textarea>
+          <textarea id="message" v-model="form.message" name="message" rows="6" :aria-invalid="Boolean(fields.message)" aria-describedby="message-error"></textarea>
+          <p v-if="fields.message" id="message-error" class="field-error">{{ fields.message }}</p>
         </div>
 
-        <button type="submit" class="form-button">SEND MESSAGE →</button>
+        <button type="submit" class="form-button" :disabled="formStatus === 'pending'">{{ formStatus === 'pending' ? 'SENDING…' : 'SEND MESSAGE →' }}</button>
 
-        <p id="formMessage" class="form-message" role="status" :data-status="formStatus">
+        <p id="formMessage" class="form-message" role="status" aria-live="polite" :data-status="formStatus">
           {{ formMessage }}
         </p>
       </form>

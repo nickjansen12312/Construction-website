@@ -1,3 +1,24 @@
+<script setup>
+import { nextTick, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { services } from '../content/siteContent'
+import { SERVICE_ANCHORS } from '../router'
+
+const route = useRoute()
+
+watch(
+  () => route.hash,
+  async (hash) => {
+    const serviceId = hash.slice(1)
+    if (!SERVICE_ANCHORS.includes(serviceId)) return
+
+    await nextTick()
+    document.getElementById(serviceId)?.focus({ preventScroll: true })
+  },
+  { immediate: true, flush: 'post' },
+)
+</script>
+
 <template>
   <main>
     <section class="inner-hero services-hero">
@@ -18,61 +39,23 @@
     </section>
 
     <section class="service-list">
-      <div class="service-detail" id="mechanical">
-        <div class="service-detail-number">01</div>
+      <article
+        v-for="service in services"
+        :id="service.id"
+        :key="service.id"
+        class="service-detail"
+        tabindex="-1"
+        :aria-labelledby="`${service.id}-heading`"
+      >
+        <div class="service-detail-number">{{ service.number }}</div>
         <div>
-          <h2>Mechanical</h2>
-          <p>We design and install mechanical systems that keep buildings comfortable, efficient, and reliable.</p>
+          <h2 :id="`${service.id}-heading`">{{ service.name }}</h2>
+          <p>{{ service.detail }}</p>
           <ul>
-            <li>HVAC Systems</li>
-            <li>Heating and Cooling</li>
-            <li>Air Distribution</li>
-            <li>Mechanical Piping</li>
+            <li v-for="capability in service.capabilities" :key="capability">{{ capability }}</li>
           </ul>
         </div>
-      </div>
-
-      <div class="service-detail" id="electrical">
-        <div class="service-detail-number">02</div>
-        <div>
-          <h2>Electrical</h2>
-          <p>Our electrical teams provide infrastructure that powers everything from everyday workplaces to complex facilities.</p>
-          <ul>
-            <li>Power Distribution</li>
-            <li>Lighting</li>
-            <li>Electrical Infrastructure</li>
-            <li>Emergency Systems</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="service-detail" id="plumbing">
-        <div class="service-detail-number">03</div>
-        <div>
-          <h2>Plumbing</h2>
-          <p>We install dependable plumbing systems designed around the needs of each building.</p>
-          <ul>
-            <li>Water Systems</li>
-            <li>Drainage</li>
-            <li>Process Piping</li>
-            <li>Plumbing Fixtures</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="service-detail" id="automation">
-        <div class="service-detail-number">04</div>
-        <div>
-          <h2>Automation</h2>
-          <p>Smart controls connect building systems, helping facilities operate more efficiently and intelligently.</p>
-          <ul>
-            <li>Building Controls</li>
-            <li>Energy Management</li>
-            <li>Monitoring</li>
-            <li>System Integration</li>
-          </ul>
-        </div>
-      </div>
+      </article>
     </section>
 
     <section class="cta-section">

@@ -6,6 +6,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 116px;
 }
 
 body {
@@ -142,6 +143,16 @@ img {
 
 .mobile-menu.open {
     display: flex;
+}
+
+.mobile-service-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-service-links a {
+    padding-left: 50px;
+    font-size: 12px;
 }
 
 .hero {
@@ -752,6 +763,10 @@ footer {
 
 @media (max-width: 900px) {
 
+    html {
+        scroll-padding-top: 96px;
+    }
+
     .site-header {
         height: 80px;
     }
@@ -1248,6 +1263,14 @@ footer {
     padding: 80px 12%;
 
     border-top: 1px solid #d4d7d2;
+
+    scroll-margin-top: 116px;
+
+    outline: none;
+}
+
+.service-detail:focus-visible {
+    box-shadow: inset 4px 0 #65694f;
 }
 
 .service-detail-number {
@@ -1511,17 +1534,10 @@ footer {
 
     border-top: 1px solid #d5d8d5;
 
-    cursor: pointer;
-
-    transition: padding 0.3s ease;
 }
 
 .job:last-child {
     border-bottom: 1px solid #d5d8d5;
-}
-
-.job:hover {
-    padding-left: 15px;
 }
 
 .job > div > span {
@@ -1540,16 +1556,6 @@ footer {
     font-weight: 300;
 
     margin-top: 10px;
-}
-
-.job-arrow {
-    font-size: 25px;
-
-    transition: transform 0.3s ease;
-}
-
-.job:hover .job-arrow {
-    transform: translateX(8px);
 }
 
 .contact-section {
@@ -1692,6 +1698,26 @@ footer {
     color: #596050;
 }
 
+.field-error {
+    margin-top: 8px;
+
+    color: #8b1e1e;
+
+    font-size: 13px;
+}
+
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] {
+    border-bottom-color: #8b1e1e;
+}
+
+.form-button:disabled {
+    cursor: wait;
+
+    opacity: 0.7;
+}
+
 @media (max-width: 900px) {
 
     .inner-hero {
@@ -1754,6 +1780,8 @@ footer {
         grid-template-columns: 1fr;
 
         padding: 60px 8%;
+
+        scroll-margin-top: 96px;
     }
 
     .service-detail-number {
@@ -1869,7 +1897,8 @@ footer {
     z-index: 1000;
 }
 
-.nav-dropdown:hover .dropdown-menu {
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -1883,7 +1912,8 @@ footer {
     letter-spacing: 0.08em;
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible {
     background: rgba(255,255,255,0.08);
 }
 
