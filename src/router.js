@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+/** @type {import('vue-router').RouteRecordRaw[]} */
 const routes = [
   {
     path: '/',
@@ -86,7 +87,7 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  if (to.meta.title) document.title = to.meta.title
+  if (typeof to.meta.title === 'string') document.title = to.meta.title
 })
 
 export default router

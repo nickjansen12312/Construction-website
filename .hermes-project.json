@@ -1,10 +1,13 @@
 {
   "schema_version": 1,
-  "status": "needs-review",
+  "status": "ready",
   "initialized_at": "2026-09-28T03:00:00.000Z",
   "repository_root": ".",
-  "inventory_fingerprint": "static-site-baseline-36506e4",
+  "inventory_fingerprint": "64f7829592fd647997604f78add3bde58c0f1fc7712593461d039fe7924b2e53",
   "kept": [
+    { "path": "AGENTS.md", "reason": "project-specific contributor policy and release gates" },
+    { "path": ".hermes/skills/project-context/SKILL.md", "reason": "project-local Hermes adapter" },
+    { "path": "package.json", "reason": "approved package scripts contain no autonomous agent hooks" },
     { "path": "css/style.css", "reason": "branded design source of truth" },
     { "path": "images/", "reason": "site media (rights owner-gated)" },
     { "path": "js/script.js", "reason": "legacy interactivity, ported to Vue" }
@@ -14,18 +17,28 @@
   ],
   "quarantined": [],
   "ignored_generated": [],
+  "issue_tracker": {
+    "provider": "paperclip",
+    "project": "Construction Website",
+    "root_issue": "APP-743"
+  },
+  "domain_documents": {
+    "layout": "single-context",
+    "paths": ["docs/agents/domain.md", "docs/agents/issue-tracker.md"]
+  },
   "commands": {
     "install": "npm install",
     "build": "npm run build",
-    "test": "",
-    "typecheck": "",
-    "lint": ""
+    "test": "npm test",
+    "typecheck": "npm run typecheck",
+    "lint": "npm run lint"
   },
-  "verification": [],
-  "unresolved": [
-    {
-      "path": "AGENTS.md",
-      "reason": "Protected agent-instruction-file write denied (approval prompt timed out, no human response). Not retried or bypassed. Requires a real-time approval response or platform repair before the file can be created."
-    }
-  ]
+  "verification": [
+    { "command": "python3 <hermes-project-onboarding>/scripts/scan_agentic_structure.py . --json", "result": "passed: 3 candidates, 0 flags" },
+    { "command": "npm run lint", "result": "passed" },
+    { "command": "npm run typecheck", "result": "passed" },
+    { "command": "npm test", "result": "passed: 21 tests" },
+    { "command": "npm run build", "result": "passed" }
+  ],
+  "unresolved": []
 }
