@@ -32,7 +32,7 @@ import { teamMembers } from '../content/siteContent'
     <section class="team-grid-section">
       <div class="team-grid">
         <article v-for="member in teamMembers" :key="member.name" class="team-member">
-          <div class="team-photo"><img :src="member.image" :alt="member.role" /></div>
+          <div class="team-photo" aria-hidden="true"></div>
           <div class="team-info">
             <p>{{ member.group }}</p>
             <h3>{{ member.name }}</h3>

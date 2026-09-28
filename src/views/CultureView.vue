@@ -56,9 +56,7 @@
       </div>
     </section>
 
-    <section class="culture-image-section">
-      <img src="/images/culture.jpg" alt="Bear Mechanical team working together" />
-    </section>
+    <section class="culture-image-section" aria-hidden="true"></section>
 
     <section class="page-cta">
       <div>

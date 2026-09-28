@@ -37,12 +37,21 @@ afterEach(() => {
 
 describe('shared application layout', () => {
   it('renders one shared header and footer around route content', async () => {
-    await mountAt('/about')
+    const router = await mountAt('/about')
 
     expect(host.querySelectorAll('.site-header')).toHaveLength(1)
     expect(host.querySelectorAll('main')).toHaveLength(1)
     expect(host.querySelectorAll('footer')).toHaveLength(1)
     expect(host.querySelector('h1')?.textContent).toContain('Building more than')
+
+    await router.push('/')
+    await nextTick()
+    expect(host.querySelectorAll('.project-visual')).toHaveLength(3)
+    expect(host.querySelectorAll('img[src$=".jpg"]')).toHaveLength(0)
+
+    await router.push('/team')
+    await nextTick()
+    expect(host.querySelectorAll('.team-photo[aria-hidden="true"]')).toHaveLength(4)
   })
 
   it('exposes and closes the mobile menu accessibly', async () => {

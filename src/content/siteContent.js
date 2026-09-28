@@ -45,33 +45,24 @@ export const projects = [
     category: 'HEALTHCARE',
     name: 'Springfield Medical Center',
     summary: 'A modern healthcare facility designed around efficiency, comfort, and reliable building systems.',
-    image: '/images/project-1.jpg',
-    alt: 'Healthcare construction project',
-    cardAlt: 'Modern construction project',
   },
   {
     category: 'COMMERCIAL',
     name: 'Downtown Innovation Hub',
     summary: 'A flexible commercial environment built to support collaboration, technology, and future growth.',
-    image: '/images/project-2.jpg',
-    alt: 'Commercial construction project',
-    cardAlt: 'Commercial building project',
   },
   {
     category: 'INDUSTRIAL',
     name: 'Bear Mechanical Manufacturing Campus',
     summary: 'A high-performance industrial facility designed around demanding production requirements.',
-    image: '/images/project-3.jpg',
-    alt: 'Industrial construction project',
-    cardAlt: 'Industrial construction project',
   },
 ]
 
 export const teamMembers = [
-  { group: 'LEADERSHIP', name: 'Alex Morgan', role: 'President & CEO', image: '/images/team-1.jpg' },
-  { group: 'OPERATIONS', name: 'Jordan Williams', role: 'Vice President of Operations', image: '/images/team-2.jpg' },
-  { group: 'CONSTRUCTION', name: 'Michael Carter', role: 'Director of Construction', image: '/images/team-3.jpg' },
-  { group: 'ENGINEERING', name: 'Sarah Bennett', role: 'Director of Engineering', image: '/images/team-4.jpg' },
+  { group: 'LEADERSHIP', name: 'Alex Morgan', role: 'President & CEO' },
+  { group: 'OPERATIONS', name: 'Jordan Williams', role: 'Vice President of Operations' },
+  { group: 'CONSTRUCTION', name: 'Michael Carter', role: 'Director of Construction' },
+  { group: 'ENGINEERING', name: 'Sarah Bennett', role: 'Director of Engineering' },
 ]
 
 export const awards = [

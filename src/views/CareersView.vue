@@ -31,7 +31,14 @@ import { careerBenefits, careers } from '../content/siteContent'
         <span>OPEN POSITIONS</span>
         <h2>Find your place<br />at Bear Mechanical.</h2>
         <span class="find-job-picture">
-          <img src="/images/3dB.png" alt="3d bear" />
+          <img
+            src="/images/3dB.png"
+            alt=""
+            width="863"
+            height="838"
+            loading="lazy"
+            decoding="async"
+          />
         </span>
       </div>
 

@@ -49,7 +49,13 @@ onBeforeUnmount(() => {
     <div class="logo-area">
       <router-link to="/" class="logo">
         <span class="logo-symbol">
-          <img src="/images/logo.png" alt="Bear Mechanical Logo" />
+          <img
+            src="/images/logo.png"
+            alt=""
+            width="567"
+            height="551"
+            decoding="async"
+          />
         </span>
         <span>Bear Mechanical</span>
       </router-link>

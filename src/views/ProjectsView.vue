@@ -24,9 +24,7 @@ import { projects } from '../content/siteContent'
         class="project-large"
         :class="{ reverse: index % 2 === 1 }"
       >
-        <div class="project-image">
-          <img :src="project.image" :alt="project.alt" />
-        </div>
+        <div class="project-image" aria-hidden="true"></div>
         <div class="project-info">
           <span>{{ project.category }}</span>
           <h2>{{ project.name }}</h2>

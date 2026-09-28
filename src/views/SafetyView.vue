@@ -48,9 +48,7 @@
       </article>
     </section>
 
-    <section class="safety-image">
-      <img src="/images/safety.jpg" alt="Construction workers on a safe jobsite" />
-    </section>
+    <section class="safety-image" aria-hidden="true"></section>
 
     <section class="safety-closing">
       <p class="section-label">OUR STANDARD</p>

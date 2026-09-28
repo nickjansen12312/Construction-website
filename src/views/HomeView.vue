@@ -73,7 +73,7 @@ import { projects, services, stats } from '../content/siteContent'
           class="project-card"
           :class="{ large: index === 0 }"
         >
-          <img :src="project.image" :alt="project.cardAlt" />
+          <div class="project-visual" aria-hidden="true"></div>
           <div class="project-overlay">
             <span>{{ project.category }}</span>
             <h3>{{ project.name }}</h3>

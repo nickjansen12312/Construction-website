@@ -171,13 +171,22 @@ img {
     position: absolute;
     inset: 0;
 
+    background-color: #dfe3e4;
+
     background-image:
         linear-gradient(
-            90deg,
-            rgba(225,230,232,0.72),
-            rgba(95,0,8)
+            110deg,
+            rgba(245,241,232,0.94) 0%,
+            rgba(225,230,232,0.86) 45%,
+            rgba(95,0,8,0.96) 100%
         ),
-        url("../images/hero.jpg");
+        repeating-linear-gradient(
+            135deg,
+            rgba(95,0,8,0.08) 0,
+            rgba(95,0,8,0.08) 1px,
+            transparent 1px,
+            transparent 28px
+        );
 
     background-size: cover;
     background-position: center;
@@ -572,12 +581,30 @@ img {
     height: 985px;
 }
 
-.project-card img {
-    height: 100%;
+.project-visual {
+    position: absolute;
+    inset: 0;
 
-    object-fit: cover;
+    background-color: #596050;
+    background-image:
+        linear-gradient(145deg, rgba(245,241,232,0.08), rgba(95,0,8,0.62)),
+        repeating-linear-gradient(115deg, transparent 0 42px, rgba(245,241,232,0.12) 42px 44px);
 
     transition: transform 0.7s ease;
+}
+
+.project-card:nth-child(2) .project-visual {
+    background-color: #30383e;
+    background-image:
+        linear-gradient(35deg, rgba(95,0,8,0.70), transparent 70%),
+        repeating-linear-gradient(145deg, transparent 0 34px, rgba(245,241,232,0.10) 34px 36px);
+}
+
+.project-card:nth-child(3) .project-visual {
+    background-color: #65694f;
+    background-image:
+        radial-gradient(circle at 75% 20%, rgba(245,241,232,0.20), transparent 28%),
+        linear-gradient(130deg, rgba(48,56,62,0.40), rgba(95,0,8,0.72));
 }
 
 .project-card::after {
@@ -594,7 +621,7 @@ img {
         );
 }
 
-.project-card:hover img {
+.project-card:hover .project-visual {
     transform: scale(1.06);
 }
 
@@ -951,13 +978,21 @@ footer {
 
     margin-top: 100px;
 
-    background:
+    background-color: #30383e;
+
+    background-image:
         linear-gradient(
             90deg,
-            rgba(40,48,54,0.88),
-            rgba(40,48,54,0.35)
+            rgba(40,48,54,0.98),
+            rgba(95,0,8,0.72)
         ),
-        url("../images/about.jpg");
+        repeating-linear-gradient(
+            135deg,
+            transparent 0,
+            transparent 36px,
+            rgba(245,241,232,0.09) 36px,
+            rgba(245,241,232,0.09) 38px
+        );
 
     background-size: cover;
     background-position: center;
@@ -969,52 +1004,52 @@ footer {
 }
 
 .services-hero {
-    background:
+    background-image:
         linear-gradient(
             90deg,
-            rgba(40,48,54,0.88),
-            rgba(40,48,54,0.35)
+            rgba(40,48,54,0.98),
+            rgba(101,105,79,0.72)
         ),
-        url("../images/hero.jpg");
+        repeating-linear-gradient(120deg, transparent 0 44px, rgba(245,241,232,0.08) 44px 46px);
 
     background-size: cover;
     background-position: center;
 }
 
 .projects-hero {
-    background:
+    background-image:
         linear-gradient(
             90deg,
-            rgba(40,48,54,0.88),
-            rgba(40,48,54,0.30)
+            rgba(40,48,54,0.98),
+            rgba(95,0,8,0.68)
         ),
-        url("../images/project-1.jpg");
+        repeating-linear-gradient(145deg, transparent 0 34px, rgba(245,241,232,0.09) 34px 36px);
 
     background-size: cover;
     background-position: center;
 }
 
 .careers-hero {
-    background:
+    background-image:
         linear-gradient(
             90deg,
-            rgba(40,48,54,0.88),
-            rgba(40,48,54,0.35)
+            rgba(40,48,54,0.98),
+            rgba(101,105,79,0.74)
         ),
-        url("../images/project-2.jpg");
+        radial-gradient(circle at 78% 28%, rgba(245,241,232,0.16), transparent 26%);
 
     background-size: cover;
     background-position: center;
 }
 
 .contact-hero {
-    background:
+    background-image:
         linear-gradient(
             90deg,
-            rgba(40,48,54,0.90),
-            rgba(40,48,54,0.40)
+            rgba(40,48,54,0.98),
+            rgba(95,0,8,0.72)
         ),
-        url("../images/project-3.jpg");
+        repeating-linear-gradient(60deg, transparent 0 46px, rgba(245,241,232,0.08) 46px 48px);
 
     background-size: cover;
     background-position: center;
@@ -1356,18 +1391,41 @@ footer {
 .project-image {
     height: 600px;
 
+    position: relative;
+
     overflow: hidden;
+
+    background: #596050;
 }
 
-.project-image img {
-    height: 100%;
+.project-image::before {
+    content: "";
 
-    object-fit: cover;
+    position: absolute;
+    inset: -4%;
+
+    background-image:
+        linear-gradient(145deg, rgba(245,241,232,0.06), rgba(95,0,8,0.66)),
+        repeating-linear-gradient(115deg, transparent 0 52px, rgba(245,241,232,0.12) 52px 54px);
 
     transition: transform 0.6s ease;
 }
 
-.project-large:hover .project-image img {
+.project-large:nth-child(2) .project-image::before {
+    background-color: #30383e;
+    background-image:
+        linear-gradient(35deg, rgba(95,0,8,0.72), transparent 72%),
+        repeating-linear-gradient(145deg, transparent 0 42px, rgba(245,241,232,0.10) 42px 44px);
+}
+
+.project-large:nth-child(3) .project-image::before {
+    background-color: #65694f;
+    background-image:
+        radial-gradient(circle at 72% 24%, rgba(245,241,232,0.22), transparent 28%),
+        linear-gradient(130deg, rgba(48,56,62,0.46), rgba(95,0,8,0.74));
+}
+
+.project-large:hover .project-image::before {
     transform: scale(1.04);
 }
 
@@ -1918,39 +1976,27 @@ footer {
 }
 
 .team-hero {
-    background-image: linear-gradient(
-            90deg,
-            rgba(40,48,54,0.88),
-            rgba(40,48,54,0.30)
-    ),
-    url("../images/team-1.jpg");
+    background-image:
+        linear-gradient(90deg, rgba(40,48,54,0.98), rgba(95,0,8,0.70)),
+        radial-gradient(circle at 75% 32%, rgba(245,241,232,0.18), transparent 28%);
 }
 
 .culture-hero {
-    background-image: linear-gradient(
-            90deg,
-            rgba(40,48,54,0.88),
-            rgba(40,48,54,0.30)
-    ),
-    url("../images/culture.jpg");
+    background-image:
+        linear-gradient(90deg, rgba(40,48,54,0.98), rgba(101,105,79,0.76)),
+        repeating-linear-gradient(120deg, transparent 0 44px, rgba(245,241,232,0.09) 44px 46px);
 }
 
 .awards-hero {
-    background-image: linear-gradient(
-            90deg,
-            rgba(40,48,54,0.88),
-            rgba(40,48,54,0.30)
-    ),
-    url("../images/awards.jpg");
+    background-image:
+        linear-gradient(90deg, rgba(40,48,54,0.98), rgba(95,0,8,0.72)),
+        repeating-linear-gradient(145deg, transparent 0 38px, rgba(245,241,232,0.09) 38px 40px);
 }
 
 .safety-hero {
-    background-image: linear-gradient(
-            90deg,
-            rgba(40,48,54,0.88),
-            rgba(40,48,54,0.30)
-    ),
-    url("../images/safety.jpg");
+    background-image:
+        linear-gradient(90deg, rgba(40,48,54,0.98), rgba(101,105,79,0.76)),
+        radial-gradient(circle at 78% 26%, rgba(245,241,232,0.18), transparent 28%);
 }
 
 .team-intro,
@@ -1999,17 +2045,24 @@ footer {
 
 .team-photo {
     aspect-ratio: 4 / 5;
+    position: relative;
     overflow: hidden;
-}
-
-.team-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background-color: #596050;
+    background-image:
+        linear-gradient(150deg, rgba(245,241,232,0.12), rgba(95,0,8,0.62)),
+        repeating-linear-gradient(120deg, transparent 0 40px, rgba(245,241,232,0.10) 40px 42px);
     transition: transform 0.6s ease;
 }
 
-.team-member:hover .team-photo img {
+.team-member:nth-child(2) .team-photo,
+.team-member:nth-child(4) .team-photo {
+    background-color: #30383e;
+    background-image:
+        radial-gradient(circle at 70% 24%, rgba(245,241,232,0.20), transparent 25%),
+        linear-gradient(130deg, rgba(101,105,79,0.54), rgba(95,0,8,0.68));
+}
+
+.team-member:hover .team-photo {
     transform: scale(1.04);
 }
 
@@ -2092,13 +2145,17 @@ footer {
     width: 100%;
     height: 70vh;
     overflow: hidden;
+
+    background-color: #30383e;
+    background-image:
+        linear-gradient(125deg, rgba(95,0,8,0.76), rgba(101,105,79,0.68)),
+        repeating-linear-gradient(145deg, transparent 0 52px, rgba(245,241,232,0.10) 52px 54px);
 }
 
-.culture-image-section img,
-.safety-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.safety-image {
+    background-image:
+        linear-gradient(125deg, rgba(40,48,54,0.84), rgba(101,105,79,0.78)),
+        radial-gradient(circle at 72% 28%, rgba(245,241,232,0.18), transparent 26%);
 }
 
 .awards-intro {
