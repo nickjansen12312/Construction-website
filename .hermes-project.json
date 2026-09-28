@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "needs-review",
+  "initialized_at": "2026-09-28T03:00:00.000Z",
+  "repository_root": ".",
+  "inventory_fingerprint": "static-site-baseline-36506e4",
+  "kept": [
+    { "path": "css/style.css", "reason": "branded design source of truth" },
+    { "path": "images/", "reason": "site media (rights owner-gated)" },
+    { "path": "js/script.js", "reason": "legacy interactivity, ported to Vue" }
+  ],
+  "normalized": [
+    { "path": "index.html", "reason": "replaced by Vite SPA entry; original archived under legacy/" }
+  ],
+  "quarantined": [],
+  "ignored_generated": [],
+  "commands": {
+    "install": "npm install",
+    "build": "npm run build",
+    "test": "",
+    "typecheck": "",
+    "lint": ""
+  },
+  "verification": [],
+  "unresolved": [
+    {
+      "path": "AGENTS.md",
+      "reason": "Protected agent-instruction-file write denied (approval prompt timed out, no human response). Not retried or bypassed. Requires a real-time approval response or platform repair before the file can be created."
+    }
+  ]
+}
