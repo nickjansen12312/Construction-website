@@ -82,7 +82,7 @@ img {
 }
 
 .main-nav a {
-    color: white;
+    color: #F5F1E8;
 
     font-size: 14px;
     font-weight: 700;
@@ -105,7 +105,7 @@ img {
 
     border: none;
     background: #5f0008;
-    color: white;
+    color: #F5F1E8;
 
     font-size: 25px;
 
@@ -130,7 +130,7 @@ img {
 }
 
 .mobile-menu a {
-    color: white;
+    color: #F5F1E8;
 
     padding: 20px 30px;
 
@@ -222,7 +222,7 @@ img {
 
     background: #5f0008;
 
-    color: white;
+    color: #F5F1E8;
 
     font-size: 12px;
 
@@ -595,7 +595,7 @@ img {
 
     z-index: 2;
 
-    color: white;
+    color: #F5F1E8;
 }
 
 .project-overlay span {
@@ -653,7 +653,7 @@ img {
 }
 
 .cta-button {
-    border: 1px solid white;
+    border: 1px solid #F5F1E8;
 
     padding: 20px 30px;
 
@@ -733,7 +733,7 @@ footer {
 }
 
 .footer-bottom a:hover {
-    color: white;
+    color: #F5F1E8;
 }
 
 @keyframes heroFade {
@@ -1061,7 +1061,7 @@ footer {
 
     padding: 140px 12%;
 
-    background: white;
+    background: #F5F1E8;
 }
 
 .about-label {
@@ -1878,7 +1878,7 @@ footer {
 .dropdown-menu a {
     display: block;
     padding: 12px 22px;
-    color: white;
+    color: #F5F1E8;
     font-size: 12px;
     letter-spacing: 0.08em;
 }
